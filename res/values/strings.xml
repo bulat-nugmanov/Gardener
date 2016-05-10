@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Gardener</string>
+    <string name="arduino_name">linvor</string>
+    <string name="arduino_pairing_pass">1234</string>
+
+    <string name="uuid">28f54122-fb06-40b9-acc0-839b0daff7c3</string>
+
+    <string name="button_main_connect">Connect</string>
+    <string name="button_main_browse">Browse and Upload</string>
+    <string name="button_browse_new">New</string>
+    <string name="button_browse_edit">Edit</string>
+    <string name="button_browse_upload">Upload</string>
+    <string name="button_browse_remove">Delete</string>
+    <string name="button_edit_day_select">day</string>
+    <string name="button_edit_week_select">week</string>
+    <string name="button_edit_create">Confirm</string>
+    <string name="button_edit_upload">Confirm and Upload</string>
+    <string name="button_edit_custom">Build Custom</string>
+    <string name="button_connect_scan">Scan for devices</string>
+    <string name="button_connect_connect">Connect to selected</string>
+
+    <string name="dialog_msg_existing_item">A schedule with that name already exists. Replace schedule?</string>
+
+    <string name="toast_bt_enabled">Bluetooth enabled</string>
+    <string name="toast_bt_disabled">Failed to enable bluetooth</string>
+    <string name="toast_bt_discovery_enabled">Local device is now discoverable</string>
+    <string name="toast_bt_discovery_disabled">Failed to make local device discoverable</string>
+    <string name="toast_bt_not_supported">No bluetooth support!</string>
+    <string name="toast_bt_discovery_initiated">Searching for devices</string>
+    <string name="toast_bt_discovery_failed_to_initiate">Failed to initiate bluetooth discovery</string>
+    <string name="toast_existing_schedule">A schedule with that name already exists. Choose another name.</string>
+    <string name="toast_bt_failed_to_connect">Failed to connect to device</string>
+    <string name="toast_bt_not_connected">Not connected to a device</string>
+    <string name="toast_connected_to_device">Successfully connected to:</string>
+    <string name="toast_bt_write_fail">Failed to write to device</string>
+    <string name="toast_no_device_selected">No device selected</string>
+
+    <string name="text_browse_empty">No schedules to show</string>
+    <string name="text_dialog_option_ok">Ok</string>
+    <string name="text_dialog_option_cancel">Cancel</string>
+    <string name="text_edit_descriptor">times daily</string>
+    <string name="text_edit_descriptor_weekly">times a week</string>
+    <string name="text_edit_enter_name">Enter schedule name here</string>
+    <string name="text_edit_set_day">day</string>
+    <string name="text_edit_set_week">week</string>
+    <string name="text_edit_set_level">Set target soil moisture level:</string>
+    <string name="text_default_schedule_name">Schedule 1</string>
+    <string name="text_connect_empty">Please scan for devices</string>
+    
+    <string name="key_edit_selected">edit_selected</string>
+    <string name="key_selected_schedule_name">selected_schedule</string>
+    <string name="key_bluetooth_device">bt_device</string>
+    <string name="key_connection_intent">cnct_intent</string>
+    <string name="key_mac_address">mac</string>
+    <string name="key_data">data</string>
+
+    <string name="msg_connect">connect</string>
+    <string name="msg_write">write</string>
+    <string name="msg_read">read</string>
+
+    <string name="tag_schedule_list_fragment">scheduleListFragment</string>
+
+    <string name="msg_illegal_name">Schedule must have a name</string>
+</resources>

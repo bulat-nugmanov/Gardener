@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="max_mst_lvl">50</integer>
+    <integer name="min_mst_lvl">20</integer>
+    <integer name="min_daily_freq">1</integer>
+    <integer name="max_daily_freq">4</integer>
+    <integer name="min_weekly_freq">1</integer>
+    <integer name="max_weekly_freq">7</integer>
+    <integer name="default_daily_freq">1</integer>
+    <integer name="default_initial_hydration_hour">1</integer>
+
+    <integer name="code_enable_bluetooth_request">100</integer>
+    <integer name="code_make_discoverable_request">101</integer>
+
+    <integer name="duration_discoverable_in_sec">600</integer>
+
+</resources>

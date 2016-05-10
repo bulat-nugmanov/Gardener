@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="interval_choices">
+        <item>day</item>
+        <item>week</item>
+    </string-array>
+    <string-array name="moisture_level_choices">
+        <item>LOW</item>
+        <item>MEDIUM</item>
+        <item>HIGH</item>
+    </string-array>
+</resources>

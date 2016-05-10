@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.example.Gardener"
+          android:versionCode="1"
+          android:versionName="1.0">
+    <uses-permission android:name="ANDROID.PERMISSION.BLUETOOTH"/>
+    <uses-sdk android:minSdkVersion="21"/>
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <application android:label="@string/app_name" android:icon="@drawable/ic_launcher">
+        <activity android:name="MainActivity"
+                  android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:parentActivityName=".MainActivity"
+                  android:name="BrowseActivity"></activity>
+        <activity android:name="EditActivity"
+                  android:parentActivityName=".BrowseActivity"></activity>
+        <activity android:name=".ConnectActivity"
+                  android:parentActivityName=".MainActivity"></activity>
+        <service android:exported="false"
+                android:name=".util.ArduinoConnectionService"></service>
+    </application>
+</manifest>
