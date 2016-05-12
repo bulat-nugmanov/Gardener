@@ -34,8 +34,6 @@ public class ArduinoConnectionService extends IntentService {
     private final String MSG_WRITE = "write";
     private final String MSG_READ = "read";
 
-    private final String PC_NAME = "LENOVOBULAT";
-
     private final static UUID APP_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
     private final String TAG = "ACS";
     private Boolean connected = false;
@@ -79,7 +77,7 @@ public class ArduinoConnectionService extends IntentService {
     /**
      * Establishes a connection with given bluetooth device:
      * sends client request and opens bluetooth socket if accepted
-     * @param device
+     * @param device: the device to connect to
      */
     private void connectToDevice(BluetoothDevice device){
 

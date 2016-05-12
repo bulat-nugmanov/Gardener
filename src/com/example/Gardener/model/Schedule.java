@@ -11,11 +11,5 @@ public interface Schedule {
 
     void setName(String name);
 
-    void addItem(ScheduleItem item);
-
-    void removeItem(ScheduleItem item);
-
-    void replaceItem(ScheduleItem item);
-
     String toEncodedString();
 }

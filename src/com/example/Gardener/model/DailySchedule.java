@@ -1,5 +1,7 @@
 package com.example.Gardener.model;
 
+import com.example.Gardener.util.ArduinoMessages;
+
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -43,7 +45,7 @@ public class DailySchedule extends AbstractSchedule implements Iterable {
         this.day = day;
     }
 
-    /**
+    /** Self explanatory
      * @param h: hour
      * @return a hydration object at hour = h
      */
@@ -75,7 +77,7 @@ public class DailySchedule extends AbstractSchedule implements Iterable {
 
     /**
      * Replaces hydration at the same hour as the one given, with the one given
-     * @param hydration
+     * @param hydration: hydration to replace with
      */
     public void replaceHydration(Hydration hydration){
         Hydration h = getHydrationAtHour(hydration.getHour());
@@ -106,32 +108,18 @@ public class DailySchedule extends AbstractSchedule implements Iterable {
         hydrations.clear();
     }
 
-    public int getNumHydrations(){
-        return hydrations.size();
-    }
-
     @Override
     public Iterator<Hydration> iterator() {
         return hydrations.iterator();
     }
 
-    @Override
-    public void addItem(ScheduleItem item) {
-        addHydration((Hydration) item);
-    }
-
-    @Override
-    public void removeItem(ScheduleItem item) {
-        removeHydration((Hydration) item);
-    }
-
-    @Override
-    public void replaceItem(ScheduleItem item) {
-        removeHydration((Hydration) item);
-    }
-
+    /**
+     * Encodes a daily schedule into a String in the following format:
+     * DAYnH..., where DAY is a character defined in ArduinoMessages, H... the encoded hydration event strings,
+     * and n is the numbered day of the week (0 = unspecified; 1-7 -> Monday-Sunday)
+     */
     public String toEncodedString() {
-        String tag = "D" + getDayNum();
+        String tag = ArduinoMessages.DAY + getDayNum();
         StringBuilder sb = new StringBuilder(tag);
         for(Hydration h: hydrations){
             sb.append(h.toEncodedString());

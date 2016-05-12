@@ -5,21 +5,23 @@ import java.nio.charset.StandardCharsets;
 
 /**
  * Class used for encoding schedules into byte arrays
- * for upload to Arduino companion devices over Bluetooth;
- * Resulting byte should at worst be 956 bytes long
+ * for upload to Arduino companion devices over Bluetooth.
+ */
+
+/**
+ * Schedules are encoded by implementations of toEncodedString in subclasses of Schedule
+ * (which should all be defined by messages in ArduinoMessages).
  */
 public class ScheduleDataParser {
 
-    private final static String BEGIN = "<";
-    private final static String END = ">";
-    private final static String HOUR = "H";
-    private final static String LVL = "A";
-    private final static String DAY = "D";
-    private final static String WEEK = "W";
-
-    public static byte[] scheduleToBytes(Schedule schedule){
-        String result = BEGIN + schedule.toEncodedString() + END;
-        return result.getBytes(StandardCharsets.US_ASCII);
+    public static byte[] setScheduleMsg(Schedule schedule){
+        String str = ArduinoMessages.BEGIN +
+                ArduinoMessages.SET +
+                schedule.toEncodedString() +
+                ArduinoMessages.END;
+        return str.getBytes(StandardCharsets.US_ASCII);
     }
-}
+
+    }
+
 

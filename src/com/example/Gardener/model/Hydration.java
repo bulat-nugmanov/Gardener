@@ -1,5 +1,7 @@
 package com.example.Gardener.model;
 
+import com.example.Gardener.util.ArduinoMessages;
+
 /**
  * Represents a single hydration event, with hour and target moisture level.
  * Two hydrations are considered equal if they are scheduled for the same hour
@@ -78,7 +80,12 @@ public class Hydration implements Comparable<Hydration>, ScheduleItem {
         return hour;
     }
 
+    /**
+     * Encodes a hydration into a String in the following format:
+     * HOURhLVLl, where HOUR and LVL are characters defined in ArduinoMessages,
+     * h is the scheduled hour, and l the target moisture level in percent.
+     */
     public String toEncodedString() {
-        return "H" + hour + "A" + moistureLevel;
+        return ArduinoMessages.HOUR + hour + ArduinoMessages.LVL + moistureLevel;
     }
 }

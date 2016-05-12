@@ -6,15 +6,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 import com.example.Gardener.model.AbstractSchedule;
-import com.example.Gardener.model.DailySchedule;
 import com.example.Gardener.model.ScheduleManager;
-import com.example.Gardener.model.WeeklySchedule;
 import com.example.Gardener.ui.ScheduleListFragment;
 import com.example.Gardener.ui.ScheduleSelectionListener;
 import com.example.Gardener.util.ArduinoConnectionService;
 import com.example.Gardener.util.ScheduleDataParser;
-
-import java.util.ArrayList;
 
 public class BrowseActivity extends Activity implements ScheduleSelectionListener {
 
@@ -42,7 +38,7 @@ public class BrowseActivity extends Activity implements ScheduleSelectionListene
     /**
      * If selected schedule is not null: sets editing state to true,
      * puts selected schedule and editing state into intent, and starts the edit activity.
-     * @param view
+     * @param view: pressed view
      */
     public void onEditPressed(View view){
         if(selectedSchedule!=null) {
@@ -61,7 +57,7 @@ public class BrowseActivity extends Activity implements ScheduleSelectionListene
 
     /**
      * Sets editing state to false and starts the edit activity
-     * @param view
+     * @param view: pressed view
      */
     public void onCreatePressed(View view){
         setEditSelected(false);
@@ -71,7 +67,7 @@ public class BrowseActivity extends Activity implements ScheduleSelectionListene
 
     /**
      * If selected schedule is not null, deletes it from the schedule manager instance
-     * @param view
+     * @param view: pressed view
      */
     public void onDeletePressed(View view){
         if(selectedSchedule!=null) {
@@ -89,7 +85,7 @@ public class BrowseActivity extends Activity implements ScheduleSelectionListene
         if(selectedSchedule!=null) {
             Intent i = new Intent(this, ArduinoConnectionService.class);
             i.putExtra(getString(R.string.key_connection_intent), getString(R.string.msg_write));
-            byte[] data = ScheduleDataParser.scheduleToBytes(selectedSchedule);
+            byte[] data = ScheduleDataParser.setScheduleMsg(selectedSchedule);
             i.putExtra(getString(R.string.key_data), data);
             startService(i);
         } else {

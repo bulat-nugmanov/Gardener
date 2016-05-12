@@ -2,6 +2,7 @@ package com.example.Gardener.model;
 
 import com.example.Gardener.model.exception.ExistingItemException;
 import com.example.Gardener.model.exception.IllegalScheduleException;
+import com.example.Gardener.util.ArduinoMessages;
 
 import java.util.Collections;
 import java.util.HashSet;
@@ -52,23 +53,12 @@ public class WeeklySchedule extends AbstractSchedule implements Iterable {
         return schedules.iterator();
     }
 
-    @Override
-    public void addItem(ScheduleItem item) {
-
-    }
-
-    @Override
-    public void removeItem(ScheduleItem item) {
-
-    }
-
-    @Override
-    public void replaceItem(ScheduleItem item) {
-
-    }
-
+    /**
+     * Returns a concatenation of contained daily schedules encoded into strings, in the format:
+     * WEEKDaDbDc, where WEEK is a symbol defined in ArduinoMessages, and DaDbDc are the daily schedules
+     */
     public String toEncodedString() {
-        StringBuilder sb = new StringBuilder("W");
+        StringBuilder sb = new StringBuilder(ArduinoMessages.WEEK);
         for(DailySchedule d: schedules){
             sb.append(d.toEncodedString());
         }
