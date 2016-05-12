@@ -167,6 +167,7 @@ void handleMessage(char message[]){
  * and target for the current hour
  */
 int checkMoistureLevel(){
+  
   int i = weekdayIndexInScheduleArray();
   int j = hour();
   return moistureLevel - schedules[i][j];
@@ -189,7 +190,7 @@ int weekdayIndexInScheduleArray(){
  */
 void runServo(Servo servo, int t){
   servo.write(180);
-  delay(t);
+  Alarm.delay(t);
   servo.write(0);
   }
 
@@ -206,10 +207,9 @@ void calibrate(){}
 int isOptimal(int level){}
 
 void sendStatus(){
-      checkMoistureLevel();
-      byte lvl = byte(moistureLevel);
+      readMoistureLevelFromSensor();
       bluetooth.write(BEGIN);
-      bluetooth.write(lvl);
+      bluetooth.write(moistureLevel);
       bluetooth.write(END);
 }
 
