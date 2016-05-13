@@ -1,5 +1,5 @@
 # Gardener
 
-Gardener is Android management app for an Arduino UNO-based, Bluetooth-enabled automated watering system.
+Gardener is an Android management app for a Bluetooth-enabled automated watering system based on Arduino.
 
 Please check back on May 13th for details!

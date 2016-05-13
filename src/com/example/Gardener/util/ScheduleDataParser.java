@@ -21,8 +21,8 @@ import java.nio.charset.StandardCharsets;
  *
  * For example:
  * <SW,D0,H12,L50,D3,H12,L50
+ *
  */
-
 
 /**
  * Schedules are encoded by implementations of toEncodedString in subclasses of Schedule
