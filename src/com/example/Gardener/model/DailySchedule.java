@@ -115,8 +115,8 @@ public class DailySchedule extends AbstractSchedule implements Iterable {
 
     /**
      * Encodes a daily schedule into a String in the following format:
-     * DAYnH..., where DAY is a character defined in ArduinoMessages, H... the encoded hydration event strings,
-     * and n is the numbered day of the week (0 = unspecified; 1-7 -> Monday-Sunday)
+     * DNH, where D is a character defined in ArduinoMessages, H the encoded hydration event string(s),
+     * and N is the weekday number defined in Day. N is 0 if weekday is unspecified (i.e. same schedule everyday)
      */
     public String toEncodedString() {
         String tag = ArduinoMessages.DAY + getDayNum();
@@ -124,6 +124,7 @@ public class DailySchedule extends AbstractSchedule implements Iterable {
         for(Hydration h: hydrations){
             sb.append(h.toEncodedString());
         }
+        sb.append(ArduinoMessages.DELIM);
         return sb.toString();
     }
 }

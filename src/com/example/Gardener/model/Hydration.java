@@ -86,6 +86,6 @@ public class Hydration implements Comparable<Hydration>, ScheduleItem {
      * h is the scheduled hour, and l the target moisture level in percent.
      */
     public String toEncodedString() {
-        return ArduinoMessages.HOUR + hour + ArduinoMessages.LVL + moistureLevel;
+        return ArduinoMessages.HOUR + hour + ArduinoMessages.LVL + moistureLevel + ArduinoMessages.DELIM;
     }
 }
