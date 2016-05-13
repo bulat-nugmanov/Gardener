@@ -85,7 +85,7 @@ public class BrowseActivity extends Activity implements ScheduleSelectionListene
         if(selectedSchedule!=null) {
             Intent i = new Intent(this, ArduinoConnectionService.class);
             i.putExtra(getString(R.string.key_connection_intent), getString(R.string.msg_write));
-            byte[] data = ScheduleDataParser.setScheduleMsg(selectedSchedule);
+            byte[] data = ScheduleDataParser.setMsg(selectedSchedule);
             i.putExtra(getString(R.string.key_data), data);
             startService(i);
         } else {

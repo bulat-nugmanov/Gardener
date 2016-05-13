@@ -15,7 +15,6 @@ import android.widget.Toast;
 import com.example.Gardener.ui.DeviceListFragment;
 import com.example.Gardener.ui.DeviceSelectionListener;
 import com.example.Gardener.util.ArduinoConnectionService;
-import com.example.Gardener.util.ArduinoConnectionThread;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -23,7 +22,8 @@ import java.util.Set;
 import java.util.UUID;
 
 /**
- * Created by Bulat on 2016-05-05.
+ * This activity is used to discover and connect to the companion
+ * Arduino device via Bluetooth.
  */
 public class ConnectActivity extends Activity implements DeviceSelectionListener {
 

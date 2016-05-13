@@ -15,7 +15,14 @@ public class DailySchedule extends AbstractSchedule implements Iterable {
     private Day day;
     private Set<Hydration> hydrations;
 
-    private final static int DEF_FIRST_HYDRATION_HOUR = 8;
+    //private final static int DEF_FIRST_HYDRATION_HOUR = 8;
+    private final static int DEF_FIRST_HYDRATION_HOUR = 0;
+
+    public DailySchedule(Day day){
+        super(null);
+        this.day = day;
+        hydrations = new HashSet<>();
+    }
 
     public DailySchedule(String name) {
         super(name);
@@ -88,9 +95,12 @@ public class DailySchedule extends AbstractSchedule implements Iterable {
     }
 
     /**
-     * populates this schedule with hydration events, each with the same
+     * Populates this schedule with hydration events, each with the same
      * target moisture level, at hourly intervals defined by chosen frequency,
      * starting with a predefined hour (default is 8am)
+     *
+     * Used to quickly generate a simple schedule
+     *
      * @param f: frequency
      * @param lvl: desired target moisture level for all hydrations
      */
@@ -119,12 +129,35 @@ public class DailySchedule extends AbstractSchedule implements Iterable {
      * and N is the weekday number defined in Day. N is 0 if weekday is unspecified (i.e. same schedule everyday)
      */
     public String toEncodedString() {
-        String tag = ArduinoMessages.DAY + getDayNum();
-        StringBuilder sb = new StringBuilder(tag);
+        StringBuilder sb = new StringBuilder(ArduinoMessages.DAY);
+        sb.append(getDayNum());
+        sb.append(ArduinoMessages.DELIM);
         for(Hydration h: hydrations){
             sb.append(h.toEncodedString());
         }
-        sb.append(ArduinoMessages.DELIM);
         return sb.toString();
+    }
+
+    /**
+     * Two Daily Schedules are equals if they have the same name,
+     * or if they are both nameless but on the same day
+     */
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+
+        DailySchedule that = (DailySchedule) o;
+
+        return day == that.day;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = super.hashCode();
+        result = 31 * result + (day != null ? day.hashCode() : 0);
+        return result;
     }
 }

@@ -14,6 +14,7 @@ public class ArduinoMessages {
 
     // Setting targets
     public final static String CALIBRATE = "C";
+    public final static String UPDATE = "U";
     public final static String TIME = "T";
     public final static String HOUR = "H";
     public final static String LVL = "L";

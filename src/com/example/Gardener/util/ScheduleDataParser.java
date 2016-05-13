@@ -19,9 +19,17 @@ import java.nio.charset.StandardCharsets;
  *      (1 or 2 digits for all targets except time, which requires 10:
  *      MMHHDDMMYY)
  *
- * For example:
- * <SW,D0,H12,L50,D3,H12,L50
+ * Examples:
+ * <SW,D0,H12,L50,D3,H12,L50,H16,L25> =
+ * Monday   12pm - 50%
+ * Thursday 12pm - 50%, 4pm - 25%
  *
+ * <SD0,H8,L30,H12,L40,H16,L50> =
+ * Everyday 8am - 30%, 12pm - 40%, 4pm - 50%
+ *
+ * <GU> = get update
+ *
+ * <AL40> = water soil 40% moisture level now
  */
 
 /**
@@ -30,14 +38,21 @@ import java.nio.charset.StandardCharsets;
  */
 public class ScheduleDataParser {
 
-    public static byte[] setScheduleMsg(Schedule schedule){
-        String str = ArduinoMessages.BEGIN +
-                ArduinoMessages.SET +
-                schedule.toEncodedString() +
-                ArduinoMessages.END;
+    /**
+     * @param schedule to encode
+     * @return SET message for given schedule as BluetoothSocket ready byte array
+     */
+    public static byte[] setMsg(Schedule schedule){
+        String str = setScheduleMsgString(schedule);
         return str.getBytes(StandardCharsets.US_ASCII);
     }
 
+    public static String setScheduleMsgString(Schedule schedule){
+    return  ArduinoMessages.BEGIN +
+            ArduinoMessages.SET +
+            schedule.toEncodedString() +
+            ArduinoMessages.END;
+    }
     }
 
 

@@ -21,11 +21,9 @@ public class WeeklySchedule extends AbstractSchedule implements Iterable {
         schedules = new HashSet<>();
     }
 
-    public void addDailySchedule(DailySchedule schedule) throws ExistingItemException, IllegalScheduleException {
+    public void addDailySchedule(DailySchedule schedule) throws ExistingItemException {
         if(schedules.contains(schedule)) {
             throw new ExistingItemException();
-        } else if (schedule.getName() == null){
-            throw new IllegalScheduleException();
         } else {
             schedules.add(schedule);
         }
@@ -62,7 +60,6 @@ public class WeeklySchedule extends AbstractSchedule implements Iterable {
         for(DailySchedule d: schedules){
             sb.append(d.toEncodedString());
         }
-        sb.append(ArduinoMessages.DELIM);
         return sb.toString();
     }
 }
