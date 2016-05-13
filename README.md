@@ -7,6 +7,8 @@ Note: As of 7:41 am May 13th there are 4 remaining issues, which I expect to clo
 UML Diagram:
 // TO ADD
 
+Please see Class descriptions for details.
+
 # Project Structure: Arduino
 About the device:
 The physical component is currently equipped with a servo used to control the water supply valve (preferably replaced with a solenoid valve or pump for finer control), and an affordable resistance-based sensor for keeping track of potted soil moisture. Other and better sensors can be easily added with minimal additions to the source code on both ends.
