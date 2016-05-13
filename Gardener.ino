@@ -37,7 +37,7 @@ Servo servo1;
 // SETTINGS
 const int BAUD = 9600;
 const int ALARM_TMR = 60 * 60;
-const int MAX_MSG_LENGTH = 1024;
+const int MAX_MSG_LENGTH = 16;
 const byte MIN_MSG_LENGTH = 8;
 const byte MAX_MST = 50;        // Maximum and minimum soil moisture levels in percent
 const byte MIN_MST = 20;
@@ -98,7 +98,7 @@ void loop() {
 	if (bluetooth.available()) {
 		char charIn = bluetooth.read();
 		if (charIn == BEGIN){
-			char message[16];
+			char message[MAX_MSG_LENGTH];
 			while (charIn != DELIM) {
 				bluetooth.readBytesUntil(END, message, MAX_MSG_LENGTH);
 				if (sizeof(message) > MIN_MSG_LENGTH){
