@@ -1,10 +1,13 @@
 # Gardener
-Imaginatively named, Gardener is a duet of two components: 1) a sensor-enabled automated watering system built on the Arduino Uno board, and 2) a companion Android app used to create custom watering schedules, and communicate them along with other information with the device over Bluetooth.
+Imaginatively named, Gardener is a duet of two components: 1) a sensor-enabled automated watering system built on the Arduino Uno board, and 2) a companion Android app used to create custom watering schedules, and communicate them along with other information with the device over Bluetooth. 
 
-Note: As of 7:41 am May 13th there are three remaining issues, which I expect to close in the coming week.
+Note: As of 7:41 am May 13th there are 4 remaining issues, which I expect to close in the coming week.
 
 # Project Structure: Android
+UML Diagram:
+// TO ADD
 
+Please see Class descriptions for details.
 
 # Project Structure: Arduino
 About the device:
@@ -17,7 +20,7 @@ List of parts:
 - Servo/Solenoid Valve/Pump
 - Relays if needed
 - Resistors (220, 1K, 2K)
-- LED
+- LED 
 - 9-12V Power source (adapter, battery, etc)
 - Tubing, water vessel, enough tape to keep it together.
 
