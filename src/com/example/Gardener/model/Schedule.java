@@ -1,7 +1,5 @@
 package com.example.Gardener.model;
 
-import java.util.Set;
-
 /**
  * Represents a schedule of schedule items
  */
@@ -12,4 +10,13 @@ public interface Schedule {
     void setName(String name);
 
     String toEncodedString();
+
+    void addItem(ScheduleItem item);
+
+    void removeItem(ScheduleItem item);
+
+    /**
+     * Replace item at the same time as the one given, with the one given
+     */
+    void replaceItem(ScheduleItem item);
 }

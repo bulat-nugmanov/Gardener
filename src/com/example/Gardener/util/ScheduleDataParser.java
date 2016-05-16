@@ -1,6 +1,7 @@
 package com.example.Gardener.util;
 
-import com.example.Gardener.model.*;
+import com.example.Gardener.model.Schedule;
+
 import java.nio.charset.StandardCharsets;
 
 /**
@@ -50,6 +51,7 @@ public class ScheduleDataParser {
     public static String setScheduleMsgString(Schedule schedule){
     return  ArduinoMessages.BEGIN +
             ArduinoMessages.SET +
+            ArduinoMessages.DELIM +
             schedule.toEncodedString() +
             ArduinoMessages.END;
     }

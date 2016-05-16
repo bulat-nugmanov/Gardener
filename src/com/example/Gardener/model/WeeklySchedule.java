@@ -1,10 +1,5 @@
 package com.example.Gardener.model;
 
-import com.example.Gardener.model.exception.ExistingItemException;
-import com.example.Gardener.model.exception.IllegalScheduleException;
-import com.example.Gardener.util.ArduinoMessages;
-
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
@@ -21,12 +16,12 @@ public class WeeklySchedule extends AbstractSchedule implements Iterable {
         schedules = new HashSet<>();
     }
 
-    public void addDailySchedule(DailySchedule schedule) throws ExistingItemException {
-        if(schedules.contains(schedule)) {
-            throw new ExistingItemException();
-        } else {
+    public void addSchedule(DailySchedule schedule){
+        //if(getScheduleOnDay(schedule.getDay())!=null) {
+        //    throw new ExistingItemException();
+        //} else {
             schedules.add(schedule);
-        }
+        //}
     }
 
     public DailySchedule getScheduleOnDay(Day d){
@@ -38,12 +33,12 @@ public class WeeklySchedule extends AbstractSchedule implements Iterable {
         return null;
     }
 
-    public void removeDailySchedule(DailySchedule schedule){
+    public void removeSchedule(DailySchedule schedule){
         schedules.remove(schedule);
     }
 
-    public void replaceDailySchedule(DailySchedule schedule){
-        removeDailySchedule(getScheduleOnDay(schedule.getDay()));
+    public void replaceSchedule(DailySchedule schedule){
+        removeSchedule(getScheduleOnDay(schedule.getDay()));
         schedules.add(schedule);
     }
 
@@ -56,10 +51,28 @@ public class WeeklySchedule extends AbstractSchedule implements Iterable {
      * WEEKDaDbDc, where WEEK is a symbol defined in ArduinoMessages, and DaDbDc are the daily schedules
      */
     public String toEncodedString() {
-        StringBuilder sb = new StringBuilder(ArduinoMessages.WEEK);
+        StringBuilder sb = new StringBuilder();
         for(DailySchedule d: schedules){
             sb.append(d.toEncodedString());
         }
         return sb.toString();
+    }
+
+    @Override
+    public void addItem(ScheduleItem item) {
+        DailySchedule d = (DailySchedule) item;
+        addSchedule(d);
+    }
+
+    @Override
+    public void removeItem(ScheduleItem item) {
+        DailySchedule d = (DailySchedule) item;
+        removeSchedule(d);
+    }
+
+    @Override
+    public void replaceItem(ScheduleItem item) {
+        DailySchedule d = (DailySchedule) item;
+        replaceSchedule(d);
     }
 }

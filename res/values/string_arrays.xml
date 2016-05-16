@@ -4,9 +4,4 @@
         <item>day</item>
         <item>week</item>
     </string-array>
-    <string-array name="moisture_level_choices">
-        <item>LOW</item>
-        <item>MEDIUM</item>
-        <item>HIGH</item>
-    </string-array>
 </resources>

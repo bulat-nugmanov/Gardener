@@ -24,6 +24,6 @@ public class ArduinoMessages {
     // Delimiters
     public final static String BEGIN = "<";
     public final static String END = ">";
-    public final static String DELIM = ",";
+    public final static String DELIM = "]";
 
 }

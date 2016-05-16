@@ -5,8 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.*;
-import com.example.Gardener.model.*;
-import com.example.Gardener.model.exception.ExistingItemException;
+import com.example.Gardener.exception.ExistingItemException;
+import com.example.Gardener.model.ScheduleManager;
 
 /**
  * Activity used for simple schedule creation and editing
@@ -32,7 +32,6 @@ public class EditActivity extends Activity {
 
     /**
      * initializes values and performs first set up of all widgets
-     * @param savedInstanceState
      */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -120,7 +119,6 @@ public class EditActivity extends Activity {
      * Otherwise tries to create a schedule as specified:
      *      if no schedule with selected name exists, confirms changes and goes back to browse
      *      else prompts for a different name.
-     * @param view
      */
     public void onConfirm (View view){
         Intent i = new Intent(this, BrowseActivity.class);
@@ -131,7 +129,7 @@ public class EditActivity extends Activity {
         } else {
             try {
                 ScheduleManager.getInstance().
-                        createDailySchedule(getEnteredName(), selectedFreqDaily, selectedMstLvl, null);
+                        createAndAddDailySchedule(getEnteredName(), selectedFreqDaily, selectedMstLvl, null);
                 startActivity(i);
             } catch (ExistingItemException e) {
                 Toast toast = Toast.makeText(getApplicationContext(),

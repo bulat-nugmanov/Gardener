@@ -1,5 +1,7 @@
 package com.example.Gardener.model;
-import com.example.Gardener.model.exception.ExistingItemException;
+
+import com.example.Gardener.exception.ExistingItemException;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
@@ -22,7 +24,6 @@ public class ScheduleManager implements Iterable<AbstractSchedule> {
         if(instance == null) {
             instance = new ScheduleManager();
         }
-
         return instance;
     }
 
@@ -40,7 +41,7 @@ public class ScheduleManager implements Iterable<AbstractSchedule> {
      *           leave null when creating a standalone daily schedule
      * @throws ExistingItemException if a schedule with given name already exists
      */
-    public void createDailySchedule(String name, int f, int lvl, Day day) throws ExistingItemException{
+    public void createAndAddDailySchedule(String name, int f, int lvl, Day day) throws ExistingItemException{
         checkArguments(name, f, lvl);
         DailySchedule newSchedule = new DailySchedule(name);
         newSchedule.setDay(day);
@@ -50,30 +51,22 @@ public class ScheduleManager implements Iterable<AbstractSchedule> {
 
     /**
      * Modifies existing daily schedule with given params
-     * @param name
-     * @param newFreq
-     * @param newLvl
-     * @param day
+     * (See createAndAddDailySchedule for params)
      */
     public void editDailyScheduleWithName(String name, int newFreq, int newLvl, Day day){
         DailySchedule scheduleToEdit = (DailySchedule) getScheduleWithName(name);
         scheduleToEdit.setName(name);
         scheduleToEdit.setDay(day);
-        scheduleToEdit.clearAllHydrations();
         scheduleToEdit.populate(newFreq, newLvl);
     }
 
     /**
-     * Used to check that no schedule with given name exists and that the entered params ar legal
-     * @param name
-     * @param frequency
-     * @param level
+     * Used to check that no schedule with given name exists and that the entered params are legal
      * @throws IllegalArgumentException if any of the above conditions are not met
      */
     private void checkArguments(String name, int frequency, int level)
             throws IllegalArgumentException, ExistingItemException{
-
-        if(name == null || name.equals("schedule with name already exists")){
+        if(getScheduleWithName(name) != null ){
             throw new ExistingItemException();
         } if(frequency < 1 || frequency > 4) {
             throw new IllegalArgumentException("illegal frequency");
@@ -84,7 +77,7 @@ public class ScheduleManager implements Iterable<AbstractSchedule> {
 
     /**
      * Adds given schedule and sorts the list
-     * @param schedule
+     * @param schedule: schedule to add
      * @throws ExistingItemException if schedule with same name as given already exists
      */
     public void addSchedule(AbstractSchedule schedule) throws ExistingItemException {
@@ -101,7 +94,6 @@ public class ScheduleManager implements Iterable<AbstractSchedule> {
     }
 
     /**
-     * @param name
      * @return true if a schedule with given name exists
      */
     private Boolean hasScheduleWithName(String name){
