@@ -5,7 +5,7 @@ Imaginatively named, Gardener is a duet of two components: 1) a sensor-enabled a
 
 # Project Structure: Android - Model
 
-The model itself is very simple, with a hierarchy of schedules and items implemented as schedules and hydration events, and a standard singleton manager class to build and keep track of them. A DailySchedule consists of Hydration events, while a WeeklySchedule is a collection of daily ones. See the UML class diagram for a bird's eye view; check out the class and method descriptions for a close-up. 
+The model itself is very simple, with a hierarchy of schedules and items implemented as schedules and hydration events, and a standard singleton manager class to build and keep track of them. A DailySchedule consists of Hydration events, while a WeeklySchedule is a collection of daily ones. See the UML class diagram below for a bird's eye view (the UMLet file is located in the about folder); check out the class and method descriptions for a close-up. 
 
 ![Model Structure](/about/ModelClassDiagram.png)
 
